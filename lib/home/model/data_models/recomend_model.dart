@@ -1,24 +1,17 @@
-class ReleasesModel {
-  Dates? dates;
+class RecomendModel {
   int? page;
-  List<ResultsRelease>? results;
+  List<ResultsRecomend>? results;
   int? totalPages;
   int? totalResults;
 
-  ReleasesModel(
-      {this.dates,
-      this.page,
-      this.results,
-      this.totalPages,
-      this.totalResults});
+  RecomendModel({this.page, this.results, this.totalPages, this.totalResults});
 
-  ReleasesModel.fromJson(Map<String, dynamic> json) {
-    dates = json['dates'] != null ? new Dates.fromJson(json['dates']) : null;
+  RecomendModel.fromJson(Map<String, dynamic> json) {
     page = json['page'];
     if (json['results'] != null) {
-      results = <ResultsRelease>[];
+      results = <ResultsRecomend>[];
       json['results'].forEach((v) {
-        results!.add(new ResultsRelease.fromJson(v));
+        results!.add(new ResultsRecomend.fromJson(v));
       });
     }
     totalPages = json['total_pages'];
@@ -27,9 +20,6 @@ class ReleasesModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.dates != null) {
-      data['dates'] = this.dates!.toJson();
-    }
     data['page'] = this.page;
     if (this.results != null) {
       data['results'] = this.results!.map((v) => v.toJson()).toList();
@@ -40,26 +30,7 @@ class ReleasesModel {
   }
 }
 
-class Dates {
-  String? maximum;
-  String? minimum;
-
-  Dates({this.maximum, this.minimum});
-
-  Dates.fromJson(Map<String, dynamic> json) {
-    maximum = json['maximum'];
-    minimum = json['minimum'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['maximum'] = this.maximum;
-    data['minimum'] = this.minimum;
-    return data;
-  }
-}
-
-class ResultsRelease {
+class ResultsRecomend {
   bool? adult;
   String? backdropPath;
   List<int>? genreIds;
@@ -75,7 +46,7 @@ class ResultsRelease {
   double? voteAverage;
   int? voteCount;
 
-  ResultsRelease(
+  ResultsRecomend(
       {this.adult,
       this.backdropPath,
       this.genreIds,
@@ -91,7 +62,7 @@ class ResultsRelease {
       this.voteAverage,
       this.voteCount});
 
-  ResultsRelease.fromJson(Map<String, dynamic> json) {
+  ResultsRecomend.fromJson(Map<String, dynamic> json) {
     adult = json['adult'];
     backdropPath = json['backdrop_path'];
     genreIds = json['genre_ids'].cast<int>();

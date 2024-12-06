@@ -30,8 +30,8 @@ class _MiddleWidgetState extends State<MiddleWidget> {
             );
           } else if (snapshot.hasData) {
             ReleasesModel? releasesModel = snapshot.data;
-            var resultsList = releasesModel?.results ?? [];
-           
+            var resultsListrelease = releasesModel?.results ?? [];
+
             return Container(
               color: AppColor.grayColor,
               child: Column(
@@ -48,15 +48,12 @@ class _MiddleWidgetState extends State<MiddleWidget> {
                   ),
                   SizedBox(
                     height: 140,
-                    child: ListView.separated(
-                        separatorBuilder: (context, index) => SizedBox(
-                              width: 20,
-                            ),
+                    child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: resultsList.length,
+                        itemCount: resultsListrelease.length,
                         itemBuilder: (context, index) {
                           return CardRelease(
-                            releaseModel: resultsList[index],
+                            releaseModel: resultsListrelease[index],
                           );
                         }),
                   ),
@@ -64,7 +61,11 @@ class _MiddleWidgetState extends State<MiddleWidget> {
               ),
             );
           }
-          return Text('data not found');
+          print('yaaaa');
+          return Text(
+            'data not found',
+            style: TextStyle(color: Colors.red),
+          );
         });
   }
 }

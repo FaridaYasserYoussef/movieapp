@@ -1,52 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:movieapp/common/App_color.dart';
+import 'package:movieapp/home/model/data_models/recomend_model.dart';
+import 'package:movieapp/home/view/widget/custom_button.dart';
 
 class CardRecomend extends StatelessWidget {
   CardRecomend({
     super.key,
+    required this.recomendModel,
   });
-  //final Results releaseModel;
+  final ResultsRecomend recomendModel;
   @override
   Widget build(BuildContext context) {
+    final String? text = recomendModel.title;
     return Column(
       children: [
         Stack(
           children: [
             Container(
               child: Image.network(
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/3ed155138856997.6226c3733c226.png',
+                "https://image.tmdb.org/t/p/w500${recomendModel.posterPath ?? ''}",
                 fit: BoxFit.fill,
               ),
               height: 120,
               width: 80,
             ),
-            Align(
-                alignment: Alignment.topLeft,
-                child: Stack(children: [
-                  Icon(
-                    Icons.bookmark,
-                    color: AppColor.opacityGrayColor,
-                    size: 36,
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.add),
-                    iconSize: 20,
-                    color: Colors.white,
-                  )
-                ]))
+            CustomButton()
           ],
         ),
         Padding(
-          padding:  EdgeInsets.only(left: .9),
+          padding: EdgeInsets.only(left: 2),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                children: [Icon(Icons.star_rate_rounded), Text('7.7')],
+                children: [
+                  Icon(
+                    Icons.star_rate_rounded,
+                    color: Colors.amber,
+                  ),
+                  Text(
+                    "${recomendModel.voteAverage ?? ''}".toString(),
+                    style: TextStyle(color: Colors.white),
+                  )
+                ],
               ),
-              Text('Deponded'),
-              Text('2018 R 1h59m')
+              Text(text!.length > 11 ? '${text.substring(0, 11)}..' : text),
+              Text(recomendModel.releaseDate ?? '')
             ],
           ),
         ),
