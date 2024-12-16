@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:movieapp/authentication/view/screens/login_screen.dart';
 import 'package:movieapp/authentication/view/screens/sign_up_screen.dart';
 import 'package:movieapp/authentication/view/screens/temp_home_screen.dart';
+import 'package:movieapp/watch_list/view/Screens/watchlistScreen.dart';
 import 'firebase_options.dart';
 void main() async{
     WidgetsFlutterBinding.ensureInitialized();
@@ -32,9 +33,10 @@ class MyApp extends StatelessWidget {
       routes: {
         LoginScreen.routeName:(context) => LoginScreen(),
         HomeScreen.routeName :(context) => HomeScreen(),
-        SignupScreen.routeName:(context) => SignupScreen()
+        SignupScreen.routeName:(context) => SignupScreen(),
+        WatchListScreen.routeName: (context)=>WatchListScreen()
       },
-            initialRoute: FirebaseAuth.instance.currentUser?.uid == null? LoginScreen.routeName : HomeScreen.routeName,
+            initialRoute: FirebaseAuth.instance.currentUser?.uid == null? LoginScreen.routeName : WatchListScreen.routeName,
 
     );
   }
