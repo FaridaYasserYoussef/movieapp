@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movieapp/authentication/view/screens/login_screen.dart';
 import 'package:movieapp/authentication/view/screens/sign_up_screen.dart';
-// import 'package:movieapp/home/view/screen/HomeScreen.dart';
-import 'package:movieapp/authentication/view/screens/temp_home_screen.dart';
+// import 'package:movieapp/authentication/view/screens/temp_home_screen.dart';
 import 'package:movieapp/common/app_theme.dart';
+import 'package:movieapp/home/view/screen/HomeScreen.dart';
+import 'package:movieapp/movies/view/screens/movie_search_screen.dart';
 import 'package:movieapp/watch_list/view/Screens/watchlistScreen.dart';
 
 import 'firebase_options.dart';
@@ -38,9 +39,10 @@ class MyApp extends StatelessWidget {
           home: child,
           routes: {
             LoginScreen.routeName: (context) => LoginScreen(),
-            HomeScreen.routeName: (context) => HomeScreen(),
+            // HomeScreen.routeName: (context) => HomeScreen(),
             SignupScreen.routeName: (context) => SignupScreen(),
-            WatchListScreen.routeName: (context) => WatchListScreen()
+            WatchListScreen.routeName: (context) => WatchListScreen(),
+            MovieSearchScreen.routeName: (context) => MovieSearchScreen(),
           },
           initialRoute: FirebaseAuth.instance.currentUser?.uid == null
               ? LoginScreen.routeName

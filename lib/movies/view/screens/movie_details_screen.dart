@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import '../widgets/genres_tag.dart';
 
 class MovieDetailsScreen extends StatefulWidget {
+  static const routeName = "/movieDetails";
   final int? movieId;
   const MovieDetailsScreen({
     super.key,
