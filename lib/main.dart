@@ -39,14 +39,14 @@ class MyApp extends StatelessWidget {
           home: child,
           routes: {
             LoginScreen.routeName: (context) => LoginScreen(),
-            // HomeScreen.routeName: (context) => HomeScreen(),
+            HomeScreen.routeName: (context) => HomeScreen(),
             SignupScreen.routeName: (context) => SignupScreen(),
             WatchListScreen.routeName: (context) => WatchListScreen(),
             MovieSearchScreen.routeName: (context) => MovieSearchScreen(),
           },
           initialRoute: FirebaseAuth.instance.currentUser?.uid == null
               ? LoginScreen.routeName
-              : WatchListScreen.routeName,
+              : HomeScreen.routeName,
         );
       },
       child: HomeScreen(),

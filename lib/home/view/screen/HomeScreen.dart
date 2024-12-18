@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/common/Appcolors.dart';
-import 'package:movieapp/home/view/screen/homeTab.dart';
-import 'package:movieapp/home/view/screen/search.dart';
-import 'package:movieapp/home/view/screen/watchList.dart';
 import 'package:movieapp/home/view/screen/browseScreen.dart';
+import 'package:movieapp/home/view/screen/homeTab.dart';
+import 'package:movieapp/home/view/screen/watchList.dart';
+import 'package:movieapp/movies/view/screens/movie_search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+  static const String routeName = "HomeScreen";
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -17,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     List<Widget> Tabs = [
       CustomHomeTab(),
-      CustomSearchTab(),
+      MovieSearchScreen(),
       CustomBrowse(),
       CustomWatchList()
     ];

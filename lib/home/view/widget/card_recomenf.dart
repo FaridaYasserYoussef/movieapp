@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movieapp/common/Appcolors.dart';
 import 'package:movieapp/home/model/data_models/recomend_model.dart';
 import 'package:movieapp/home/view/widget/custom_button.dart';
-import 'package:movieapp/watch_list/view_model/watch_list_cubit.dart';
+import 'package:movieapp/movies/view/screens/movie_details_screen.dart';
 
 class CardRecomend extends StatelessWidget {
   CardRecomend({
@@ -23,7 +23,15 @@ class CardRecomend extends StatelessWidget {
             children: [
               Container(
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            MovieDetailsScreen(movieId: recomendModel.id),
+                      ),
+                    );
+                  },
                   child: Image.network(
                     "https://image.tmdb.org/t/p/w500${recomendModel.posterPath ?? ''}",
                     fit: BoxFit.fill,
@@ -32,7 +40,9 @@ class CardRecomend extends StatelessWidget {
                 height: 110,
                 width: 80,
               ),
-              CustomButton()
+              CustomButton(
+                onPressed: () {},
+              )
             ],
           ),
           Padding(
@@ -61,7 +71,10 @@ class CardRecomend extends StatelessWidget {
                     textDate!.length > 4
                         ? '${textDate.substring(0, 4)}'
                         : textDate,
-                    style: Theme.of(context).textTheme.labelSmall)
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelSmall!
+                        .copyWith(color: Colors.white))
               ],
             ),
           ),

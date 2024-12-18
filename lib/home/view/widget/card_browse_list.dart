@@ -24,7 +24,9 @@ class CardBrowseList extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          CustomButton()
+          CustomButton(
+            onPressed: () {},
+          )
         ],
       ),
       title: Text(

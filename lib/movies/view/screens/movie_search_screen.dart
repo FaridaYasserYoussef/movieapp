@@ -7,7 +7,7 @@ import '../widgets/custom_search_text_field.dart';
 import '../widgets/search_movie_item.dart';
 
 class MovieSearchScreen extends StatefulWidget {
-  static const routeName = "/movieSearchScreen";
+  static const routeName = "movieSearchScreen";
   const MovieSearchScreen({super.key});
   static TextEditingController searchController = TextEditingController();
 

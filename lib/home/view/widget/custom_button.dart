@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:movieapp/common/Appcolors.dart';
 
 class CustomButton extends StatefulWidget {
-  const CustomButton({super.key});
-
+  const CustomButton({super.key, required this.onPressed});
+  final VoidCallback onPressed;
   @override
   State<CustomButton> createState() => _CustomButtonState();
 }
@@ -31,6 +31,7 @@ class _CustomButtonState extends State<CustomButton> {
           ),
           IconButton(
               onPressed: () {
+                widget.onPressed;
                 setState(() {
                   iscleck = !iscleck;
                 });
@@ -45,7 +46,6 @@ class _CustomButtonState extends State<CustomButton> {
     );
   }
 }
-
 
 //  Stack(
 //       children: [

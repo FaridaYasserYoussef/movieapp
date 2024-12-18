@@ -46,7 +46,12 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
             int movieDurationMinutes = value.movieDetailsModel!.runtime! % 60;
             return Scaffold(
               appBar: AppBar(
-                leading: Icon(Icons.arrow_back_rounded),
+                leading: IconButton(
+                  icon: Icon(Icons.arrow_back_rounded),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
                 title: Text(
                   '${value.movieDetailsModel?.title}',
                   style: TextStyle(color: Colors.white),

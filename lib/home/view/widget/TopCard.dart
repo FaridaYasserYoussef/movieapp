@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movieapp/common/Appcolors.dart';
 import 'package:movieapp/home/model/data_models/popular_model.dart';
 import 'package:movieapp/home/view/widget/custom_button.dart';
+import 'package:movieapp/movies/view/screens/movie_details_screen.dart';
 
 // ignore: must_be_immutable
 class TopCard extends StatelessWidget {
@@ -18,15 +19,26 @@ class TopCard extends StatelessWidget {
               height: 201,
               child: Stack(
                 children: [
-                  Container(
-                    width: 600,
-                    height: 170,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: NetworkImage(
-                          'https://image.tmdb.org/t/p/w500${resultsPopular!.posterPath ?? ''}'),
-                    )),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              MovieDetailsScreen(movieId: resultsPopular!.id),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 600,
+                      height: 170,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: NetworkImage(
+                            'https://image.tmdb.org/t/p/w500${resultsPopular!.posterPath ?? ''}'),
+                      )),
+                    ),
                   ),
                   Center(
                     child: IconButton(
@@ -44,14 +56,26 @@ class TopCard extends StatelessWidget {
                     child: Stack(
                       alignment: Alignment.bottomLeft,
                       children: [
-                        Container(
-                          child: Image.network(
-                              'https://image.tmdb.org/t/p/w500${resultsPopular!.posterPath ?? ''}'),
-                          width: 80,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MovieDetailsScreen(
+                                    movieId: resultsPopular!.id),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            child: Image.network(
+                                'https://image.tmdb.org/t/p/w500${resultsPopular!.posterPath ?? ''}'),
+                            width: 80,
+                          ),
                         ),
                         Align(
-                            alignment: Alignment.centerLeft,
-                            child: Stack(children: [
+                          alignment: Alignment.centerLeft,
+                          child: Stack(
+                            children: [
                               Icon(
                                 Icons.bookmark,
                                 color: AppColor.opacityGrayColor,
@@ -64,8 +88,12 @@ class TopCard extends StatelessWidget {
                                 iconSize: 20,
                                 color: Colors.white,
                               ),
-                              CustomButton()
-                            ]))
+                              CustomButton(
+                                onPressed: () {},
+                              )
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -83,7 +111,10 @@ class TopCard extends StatelessWidget {
                       textDate!.length > 4
                           ? '${textDate.substring(0, 4)}'
                           : textDate,
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelSmall!
+                          .copyWith(color: Colors.white),
                     ),
                   )
                 ],
@@ -96,22 +127,21 @@ class TopCard extends StatelessWidget {
   }
 }
 
+// Align(
+//                   alignment: Alignment.bottomCenter,
+//                   child: Text(
+//                     resultsPopular!.releaseDate ?? '',
+//                     style: TextStyle(color: Colors.white),
+//                   ),
+//                 ),
 
-  // Align(
-  //                   alignment: Alignment.bottomCenter,
-  //                   child: Text(
-  //                     resultsPopular!.releaseDate ?? '',
-  //                     style: TextStyle(color: Colors.white),
-  //                   ),
-  //                 ),
-                
-  //                 Align(
-  //                   alignment: Alignment.bottomCenter,
-  //                   child: Padding(
-  //                     padding: EdgeInsets.all(13),
-  //                     child: Text(
-  //                       resultsPopular!.title ?? '',
-  //                       style: TextStyle(color: Colors.white),
-  //                     ),
-  //                   ),
-  //                 ),
+//                 Align(
+//                   alignment: Alignment.bottomCenter,
+//                   child: Padding(
+//                     padding: EdgeInsets.all(13),
+//                     child: Text(
+//                       resultsPopular!.title ?? '',
+//                       style: TextStyle(color: Colors.white),
+//                     ),
+//                   ),
+//                 ),
