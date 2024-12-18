@@ -3,6 +3,7 @@ import 'package:movieapp/movies/model/data_models/movie_card_model.dart';
 import 'package:movieapp/movies/model/data_models/similar_movies/similar_movies_model.dart';
 
 import '../../../common/constants.dart';
+import '../../../home/view/widget/custom_button.dart';
 import '../screens/movie_details_screen.dart';
 
 class SimilarMoviesCard extends StatelessWidget {
@@ -76,28 +77,29 @@ class SimilarMoviesCard extends StatelessWidget {
                       child: Stack(
                         children: [
                           Container(),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: IconButton(
-                              padding: EdgeInsets.zero,
-                              onPressed: () {},
-                              icon: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.bookmark_rounded,
-                                    size: 50,
-                                    color: Colors.grey.withOpacity(0.6),
-                                  ),
-                                  const Icon(
-                                    Icons.add,
-                                    size: 20,
-                                    color: Colors.white,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+                          CustomButton(onPressed: () {})
+                          // Align(
+                          //   alignment: Alignment.topLeft,
+                          //   child: IconButton(
+                          //     padding: EdgeInsets.zero,
+                          //     onPressed: () {},
+                          //     icon: Stack(
+                          //       alignment: Alignment.center,
+                          //       children: [
+                          //         Icon(
+                          //           Icons.bookmark_rounded,
+                          //           size: 50,
+                          //           color: Colors.grey.withOpacity(0.6),
+                          //         ),
+                          //         const Icon(
+                          //           Icons.add,
+                          //           size: 20,
+                          //           color: Colors.white,
+                          //         ),
+                          //       ],
+                          //     ),
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/common/constants.dart';
+import 'package:movieapp/home/view/widget/custom_button.dart';
 import 'package:movieapp/movies/model/data_models/movie_card_model.dart';
 import 'package:movieapp/movies/view/widgets/similar_movies_card.dart';
 import 'package:movieapp/movies/view_model/movie_provider.dart';
@@ -124,26 +125,27 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                           Image.network(
                                             '${AppConst.imagebaseURL}${value.movieDetailsModel?.posterPath}',
                                           ),
-                                          IconButton(
-                                            padding: EdgeInsets.zero,
-                                            onPressed: () {},
-                                            icon: Stack(
-                                              alignment: Alignment.center,
-                                              children: [
-                                                Icon(
-                                                  Icons.bookmark_rounded,
-                                                  size: 50,
-                                                  color: Colors.grey
-                                                      .withOpacity(0.6),
-                                                ),
-                                                const Icon(
-                                                  Icons.add,
-                                                  size: 20,
-                                                  color: Colors.white,
-                                                ),
-                                              ],
-                                            ),
-                                          )
+                                          CustomButton(onPressed: () {})
+                                          // IconButton(
+                                          //   padding: EdgeInsets.zero,
+                                          //   onPressed: () {},
+                                          //   icon: Stack(
+                                          //     alignment: Alignment.center,
+                                          //     children: [
+                                          //       Icon(
+                                          //         Icons.bookmark_rounded,
+                                          //         size: 50,
+                                          //         color: Colors.grey
+                                          //             .withOpacity(0.6),
+                                          //       ),
+                                          //       const Icon(
+                                          //         Icons.add,
+                                          //         size: 20,
+                                          //         color: Colors.white,
+                                          //       ),
+                                          //     ],
+                                          //   ),
+                                          // )
                                         ],
                                       ),
                                     ),
