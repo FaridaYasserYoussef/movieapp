@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/movies/model/data_models/movie_card_model.dart';
+import 'package:movieapp/movies/model/data_models/movie_search/Results.dart';
 import 'package:movieapp/movies/model/data_models/similar_movies/similar_movies_model.dart';
+import 'package:movieapp/watch_list/model/data_models/watch_list_movie_model.dart';
+import 'package:movieapp/watch_list/view/Widgets/customBookmarkWidget.dart';
+import 'package:movieapp/watch_list/view_model/watch_list_cubit.dart';
 
 import '../../../common/constants.dart';
 import '../../../home/view/widget/custom_button.dart';
@@ -48,28 +52,30 @@ class SimilarMoviesCard extends StatelessWidget {
                             fit: BoxFit.fill,
                             '${AppConst.imagebaseURL}${similarMoviesModel?.results?[index!].backdropPath}',
                           ),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: IconButton(
-                              padding: EdgeInsets.zero,
-                              onPressed: () {},
-                              icon: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.bookmark_rounded,
-                                    size: 50,
-                                    color: Colors.grey.withOpacity(0.6),
-                                  ),
-                                  const Icon(
-                                    Icons.add,
-                                    size: 20,
-                                    color: Colors.white,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          )
+                          Positioned(
+                              top: -8, left: -13, child: CustomBookMarkWidget())
+                          // Align(
+                          //   alignment: Alignment.topLeft,
+                          //   child: IconButton(
+                          //     padding: EdgeInsets.zero,
+                          //     onPressed: () {},
+                          //     icon: Stack(
+                          //       alignment: Alignment.center,
+                          //       children: [
+                          //         Icon(
+                          //           Icons.bookmark_rounded,
+                          //           size: 50,
+                          //           color: Colors.grey.withOpacity(0.6),
+                          //         ),
+                          //         const Icon(
+                          //           Icons.add,
+                          //           size: 20,
+                          //           color: Colors.white,
+                          //         ),
+                          //       ],
+                          //     ),
+                          //   ),
+                          // )
                         ],
                       ),
                     )

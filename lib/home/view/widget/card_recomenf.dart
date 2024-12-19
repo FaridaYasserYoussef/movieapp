@@ -3,6 +3,9 @@ import 'package:movieapp/common/Appcolors.dart';
 import 'package:movieapp/home/model/data_models/recomend_model.dart';
 import 'package:movieapp/home/view/widget/custom_button.dart';
 import 'package:movieapp/movies/view/screens/movie_details_screen.dart';
+import 'package:movieapp/watch_list/model/data_models/watch_list_movie_model.dart';
+import 'package:movieapp/watch_list/view/Widgets/customBookmarkWidget.dart';
+import 'package:movieapp/watch_list/view_model/watch_list_cubit.dart';
 
 class CardRecomend extends StatelessWidget {
   CardRecomend({
@@ -10,10 +13,11 @@ class CardRecomend extends StatelessWidget {
     required this.recomendModel,
   });
   final ResultsRecomend recomendModel;
+
   @override
   Widget build(BuildContext context) {
     final String? text = recomendModel.title;
-    final String? textDate = recomendModel.releaseDate;
+    // final int? textDate = recomendModel.releaseDate;
     return Container(
       height: 130,
       color: AppColor.CardGray,
@@ -40,8 +44,20 @@ class CardRecomend extends StatelessWidget {
                 height: 110,
                 width: 80,
               ),
-              CustomButton(
-                onPressed: () {},
+              Positioned(
+                top: -8,
+                left: -13,
+                child: CustomBookMarkWidget(
+                  onTap: () async {
+                    WatchListCubit watchListCubit = WatchListCubit();
+                    await watchListCubit.addToWatchList(WatchListMovieModel(
+                        id: recomendModel.id.toString(),
+                        movieName: recomendModel.title ?? '',
+                        year: int.tryParse(recomendModel.releaseDate ?? ''),
+                        imageUrl:
+                            'https://image.tmdb.org/t/p/w500${recomendModel.posterPath ?? ''}'));
+                  },
+                ),
               )
             ],
           ),
@@ -68,9 +84,11 @@ class CardRecomend extends StatelessWidget {
                         .titleMedium!
                         .copyWith(fontSize: 13)),
                 Text(
-                    textDate!.length > 4
-                        ? '${textDate.substring(0, 4)}'
-                        : textDate,
+                    recomendModel.releaseDate ?? ''
+                    // textDate!.length > 4
+                    //     ? '${textDate.substring(0, 4)}'
+                    //     : textDate,
+                    ,
                     style: Theme.of(context)
                         .textTheme
                         .labelSmall!

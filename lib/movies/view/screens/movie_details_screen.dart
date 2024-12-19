@@ -4,6 +4,9 @@ import 'package:movieapp/home/view/widget/custom_button.dart';
 import 'package:movieapp/movies/model/data_models/movie_card_model.dart';
 import 'package:movieapp/movies/view/widgets/similar_movies_card.dart';
 import 'package:movieapp/movies/view_model/movie_provider.dart';
+import 'package:movieapp/watch_list/model/data_models/watch_list_movie_model.dart';
+import 'package:movieapp/watch_list/view/Widgets/customBookmarkWidget.dart';
+import 'package:movieapp/watch_list/view_model/watch_list_cubit.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/genres_tag.dart';
@@ -125,7 +128,32 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                           Image.network(
                                             '${AppConst.imagebaseURL}${value.movieDetailsModel?.posterPath}',
                                           ),
-                                          CustomButton(onPressed: () {})
+                                          Positioned(
+                                            top: -8,
+                                            left: -13,
+                                            child: CustomBookMarkWidget(
+                                              onTap: () async {
+                                                WatchListCubit watchListCubit =
+                                                    WatchListCubit();
+                                                await watchListCubit.addToWatchList(
+                                                    WatchListMovieModel(
+                                                        id: value
+                                                            .movieDetailsModel!
+                                                            .id
+                                                            .toString(),
+                                                        movieName: value
+                                                                .movieDetailsModel!
+                                                                .title ??
+                                                            '',
+                                                        year: int.tryParse(value
+                                                                .movieDetailsModel!
+                                                                .releaseDate ??
+                                                            ''),
+                                                        imageUrl:
+                                                            'https://image.tmdb.org/t/p/w500${value.movieDetailsModel!.posterPath ?? ''}'));
+                                              },
+                                            ),
+                                          )
                                           // IconButton(
                                           //   padding: EdgeInsets.zero,
                                           //   onPressed: () {},

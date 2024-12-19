@@ -7,27 +7,29 @@ import 'package:movieapp/authentication/view_model/AuthenticationState.dart';
 import 'package:movieapp/common/app_colors.dart';
 
 class LogoutButton extends StatelessWidget {
-   LogoutButton({super.key});
+  LogoutButton({super.key});
   AuthenticationCubit authenticationCubit = AuthenticationCubit();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context)=> authenticationCubit,
-    child: BlocListener<AuthenticationCubit, AuthenticationState>(
-      child: IconButton(
-      onPressed: () async{
-       await authenticationCubit.logout();
-        authenticationCubit.resetAuthenticationState();
-      },
-      icon: Icon(Icons.logout,
-      color: AppColors.mainColor,),
-    ),
-      listener: (context, state) {
-        if(state is AuthenticationInitialState){
-          Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
-        }
-      
-    },)
-    );
+    return BlocProvider(
+        create: (context) => authenticationCubit,
+        child: BlocListener<AuthenticationCubit, AuthenticationState>(
+          child: IconButton(
+            onPressed: () async {
+              await authenticationCubit.logout();
+              authenticationCubit.resetAuthenticationState();
+            },
+            icon: Icon(
+              Icons.logout,
+              color: AppColors.mainColor,
+            ),
+          ),
+          listener: (context, state) {
+            if (state is AuthenticationInitialState) {
+              Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+            }
+          },
+        ));
   }
 }

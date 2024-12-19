@@ -4,6 +4,7 @@ import 'package:movieapp/home/view/screen/browseScreen.dart';
 import 'package:movieapp/home/view/screen/homeTab.dart';
 import 'package:movieapp/home/view/screen/watchList.dart';
 import 'package:movieapp/movies/view/screens/movie_search_screen.dart';
+import 'package:movieapp/watch_list/view/Screens/watchlistScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
       CustomHomeTab(),
       MovieSearchScreen(),
       CustomBrowse(),
-      CustomWatchList()
+      WatchListScreen()
     ];
     return Scaffold(
       backgroundColor: Colors.black,
