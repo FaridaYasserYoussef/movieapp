@@ -6,8 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class WatchListFirebaseDataSource extends WatchListDataSource{
   @override
   Future addToWatchList(WatchListMovieModel movie) async{
-    DocumentReference<WatchListMovieModel> movieDocumentReference = getwatchListMoviesCollection().doc();
-    movie.id = movieDocumentReference.id;
+    DocumentReference<WatchListMovieModel> movieDocumentReference = getwatchListMoviesCollection().doc(movie.id);
+    // movie.id = movieDocumentReference.id;
     await movieDocumentReference.set(movie);
   }
 
